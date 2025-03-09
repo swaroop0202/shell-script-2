@@ -15,6 +15,7 @@ then
     echo "$2...FAILURE"
 else
     echo "$2...SUCCESS"
+fi
 
 
 dnf install mysql-server -y
@@ -34,4 +35,3 @@ then
 else 
     echo "enable success"
 fi
-
