@@ -9,29 +9,20 @@ else
 echo "you are root user"
 fi
 
-# validate ()
-# if [ $1 -ne 0]
-# then
-#     echo "$2...FAILURE"
-# else
-#     echo "$2...SUCCESS"
-# fi
+validate () {
+if [ $1 -ne 0]
+then
+    echo "$2...FAILURE"
+else
+    echo "$2...SUCCESS"
+fi
+}
 
 
 dnf install mysql-server -y
 
-if [ $? -ne 0 ]
-then
-    echo "installation of mysql failure"
-else 
-    echo "installation success"
-fi
+validate "$?" "installing mysqld"
 
 systemctl enable mysqld
 
-if [ $? -ne 0 ] 
-then
-    echo "enable of mysql failure"
-else 
-    echo "enable success"
-fi
+validate "$?" "enabling mysqld"
